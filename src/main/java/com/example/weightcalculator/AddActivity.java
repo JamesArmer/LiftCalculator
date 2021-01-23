@@ -24,6 +24,7 @@ public class AddActivity extends AppCompatActivity {
             public void onClick(View v) {
                 LiftDatabase myDB = new LiftDatabase(AddActivity.this);
                 myDB.addCategory(liftCategory_input.getText().toString().trim());
+                finish();
             }
         });
     }
