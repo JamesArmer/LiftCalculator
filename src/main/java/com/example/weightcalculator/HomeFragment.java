@@ -41,7 +41,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AddActivity.class);
-                startActivity(intent);
+                getActivity().startActivityForResult(intent, 2);
             }
         });
 
@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
 
         storeDataInArrays();
 
-        customAdapter = new CustomAdapter(getActivity(), lift_id, lift_category);
+        customAdapter = new CustomAdapter(getActivity(), getActivity(), lift_id, lift_category);
         liftCategoryRecyclerView.setAdapter(customAdapter);
         liftCategoryRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
