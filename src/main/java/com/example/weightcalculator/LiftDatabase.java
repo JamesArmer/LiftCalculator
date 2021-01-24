@@ -49,7 +49,7 @@ public class LiftDatabase extends SQLiteOpenHelper {
         if(result == -1){
             Toast.makeText(context, "Failed to insert data.", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(context, "Great success!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Added successfully!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -75,6 +75,21 @@ public class LiftDatabase extends SQLiteOpenHelper {
         } else {
             //Toast.makeText(context, "Successfully updated!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    void deleteOneRecord(String row_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(TABLE_NAME, "_id=?", new String[]{row_id});
+        if(result == -1){
+            Toast.makeText(context, "Failed to delete", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Successfully deleted.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    void deleteAllData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_NAME);
     }
 
 }

@@ -25,10 +25,20 @@
         android:hint="Lift Category e.g. Snatch" />
 
     <Button
-        android:id="@+id/updateButton"
+    android:id="@+id/updateButton"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/liftCategoryUpdateEditText"
+    android:layout_marginTop="80dp"
+    android:text="Update" />
+
+    <Button
+        android:id="@+id/deleteButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/liftCategoryUpdateEditText"
-        android:layout_marginTop="80dp"
-        android:text="Update" />
+        android:layout_below="@+id/updateButton"
+        android:layout_marginTop="20dp"
+        android:background="#D32F2F"
+        android:textColor="@android:color/white"
+        android:text="Delete" />
 </RelativeLayout>
