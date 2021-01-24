@@ -1,11 +1,14 @@
 package com.example.weightcalculator;
 
+import android.animation.Animator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,6 +24,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     Context context;
     Activity activity;
     ArrayList lift_id, lift_category;
+
+    Animation translate_anim;
 
     CustomAdapter(Context context,
                   Activity activity,
@@ -42,7 +47,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        holder.lift_id_txt.setText(String.valueOf(lift_id.get(position)));
         holder.lift_category_txt.setText(String.valueOf(lift_category.get(position)));
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,9 +71,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            lift_id_txt = itemView.findViewById(R.id.lift_id_txt);
             lift_category_txt = itemView.findViewById(R.id.lift_category_txt);
             mainLayout = itemView.findViewById(R.id.mainLayout);
+            translate_anim = AnimationUtils.loadAnimation(context, R.anim.translate_anim);
+            mainLayout.setAnimation(translate_anim);
         }
     }
 }
