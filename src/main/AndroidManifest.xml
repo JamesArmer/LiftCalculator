@@ -12,10 +12,21 @@
         <activity
             android:name=".UpdateActivity"
             android:label="Update Lift Type"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".SubcategoryActivity" />
         <activity
-            android:name=".AddActivity"
+            android:name=".PercentageActivity"
+            android:parentActivityName=".SubcategoryActivity" />
+        <activity
+            android:name=".AddCategoryActivity"
             android:label="Add Lift Type"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AddSubcategoryActivity"
+            android:label="Add Lift Name and Weight"
+            android:parentActivityName=".SubcategoryActivity" />
+        <activity
+            android:name=".SubcategoryActivity"
+            android:label="Lift subcategories"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"

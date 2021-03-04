@@ -2,19 +2,33 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".SubcategoryActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/liftCategoryRecyclerView"
+        android:id="@+id/editCategoryRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="28dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:srcCompat="@drawable/ic_add_black_24dp" />
+
     <ImageView
-        android:id="@+id/emptyImageView"
+        android:id="@+id/emptyImageView3"
         android:layout_width="144dp"
         android:layout_height="142dp"
         android:layout_marginStart="135dp"
@@ -34,17 +48,16 @@
         app:srcCompat="@drawable/ic_fitness_center_black_24dp" />
 
     <TextView
-        android:id="@+id/emptyTextView"
+        android:id="@+id/emptyTextView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Home Fragment"
+        android:text="No data"
         android:textSize="20sp"
         android:alpha="0.3"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emptyImageView" />
-
+        app:layout_constraintTop_toBottomOf="@+id/emptyImageView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

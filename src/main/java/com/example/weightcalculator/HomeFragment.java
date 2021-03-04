@@ -10,7 +10,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +24,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class HomeFragment extends Fragment {
     RecyclerView liftCategoryRecyclerView;
@@ -36,7 +34,7 @@ public class HomeFragment extends Fragment {
     LiftDatabase myDB;
     ArrayList<String> lift_id, lift_category;
 
-    CustomAdapter customAdapter;
+    CustomAdapterCategory customAdapterCategory;
 
     @Nullable
     @Override
@@ -50,14 +48,6 @@ public class HomeFragment extends Fragment {
         liftCategoryRecyclerView = getView().findViewById(R.id.liftCategoryRecyclerView);
         emptyImage = getView().findViewById(R.id.emptyImageView);
         emptyText = getView().findViewById(R.id.emptyTextView);
-        addButton = getView().findViewById(R.id.addButton);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AddActivity.class);
-                getActivity().startActivityForResult(intent, 2);
-            }
-        });
 
         myDB = new LiftDatabase(getActivity());
         lift_id = new ArrayList<>();
@@ -65,13 +55,13 @@ public class HomeFragment extends Fragment {
 
         storeDataInArrays();
 
-        customAdapter = new CustomAdapter(getActivity(), getActivity(), lift_id, lift_category);
-        liftCategoryRecyclerView.setAdapter(customAdapter);
+        customAdapterCategory = new CustomAdapterCategory(getActivity(), getActivity(), lift_id, lift_category, 0);
+        liftCategoryRecyclerView.setAdapter(customAdapterCategory);
         liftCategoryRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
     void storeDataInArrays(){
-        Cursor cursor = myDB.readAllData();
+        Cursor cursor = myDB.readAllData("Categories");
         if(cursor.getCount() == 0){
             emptyImage.setVisibility(View.VISIBLE);
             emptyText.setVisibility(View.VISIBLE);

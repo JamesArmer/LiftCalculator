@@ -13,17 +13,19 @@ import android.widget.Toast;
 
 public class UpdateActivity extends AppCompatActivity {
 
-    EditText liftCategoryUpdateEditText;
+    EditText liftNameUpdateEditText;
+    EditText liftWeightUpdateEditText;
     Button updateButton, deleteButton;
 
-    String Id, Category;
+    String Id, liftName, liftWeight, tableName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
-        liftCategoryUpdateEditText = findViewById(R.id.liftCategoryUpdateEditText);
+        liftNameUpdateEditText = findViewById(R.id.liftNameUpdateEditText);
+        liftWeightUpdateEditText = findViewById(R.id.liftWeightUpdateEditText);
         updateButton = findViewById(R.id.updateButton);
         deleteButton = findViewById(R.id.deleteButton);
 
@@ -32,8 +34,9 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 LiftDatabase myDB = new LiftDatabase(UpdateActivity.this);
-                Category = liftCategoryUpdateEditText.getText().toString().trim();
-                myDB.updateData(Id, Category);
+                liftName = liftNameUpdateEditText.getText().toString().trim();
+                liftWeight = liftWeightUpdateEditText.getText().toString().trim();
+                myDB.updateData(Id, tableName, liftName, liftWeight);
                 finish();
             }
         });
@@ -46,15 +49,18 @@ public class UpdateActivity extends AppCompatActivity {
 
         ActionBar ab = getSupportActionBar();
         if(ab != null){
-            ab.setTitle(Category);
+            ab.setTitle(liftName);
         }
     }
 
     void getAndSetIntentData(){
-        if(getIntent().hasExtra("lift_id") && getIntent().hasExtra("lift_category")){
+        if(getIntent().hasExtra("lift_name") && getIntent().hasExtra("lift_weight")){
             Id = getIntent().getStringExtra("lift_id");
-            Category = getIntent().getStringExtra("lift_category");
-            liftCategoryUpdateEditText.setText(Category);
+            liftName = getIntent().getStringExtra("lift_name");
+            liftWeight = getIntent().getStringExtra("lift_weight");
+            tableName = getIntent().getStringExtra("lift_category");
+            liftNameUpdateEditText.setText(liftName);
+            liftWeightUpdateEditText.setText(liftWeight);
         } else {
             Toast.makeText(this, "No data.", Toast.LENGTH_SHORT).show();
         }
@@ -62,13 +68,13 @@ public class UpdateActivity extends AppCompatActivity {
 
     void confirmDialogue(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete " + Category + " ?");
-        builder.setMessage("Are you sure you want to delete " + Category + " ?");
+        builder.setTitle("Delete " + liftName + " ?");
+        builder.setMessage("Are you sure you want to delete " + liftName + " ?");
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 LiftDatabase myDB = new LiftDatabase(UpdateActivity.this);
-                myDB.deleteOneRecord(Id);
+                myDB.deleteOneRecord(Id, tableName);
                 finish();
             }
         });
