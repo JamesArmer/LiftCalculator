@@ -27,6 +27,8 @@ public class CustomAdapterSubcategory extends RecyclerView.Adapter<CustomAdapter
 
     Class nextActivity;
 
+    LiftDatabase myDB;
+
     Animation translate_anim;
 
     CustomAdapterSubcategory(Context context,
@@ -62,7 +64,12 @@ public class CustomAdapterSubcategory extends RecyclerView.Adapter<CustomAdapter
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         holder.lift_name_txt.setText(String.valueOf(lift_name.get(position)));
-        holder.lift_weight_txt.setText(String.valueOf(lift_weight.get(position)) + "kg");
+        if(LiftDatabase.convertToPounds){
+            int poundsConversion = (int) (Integer.parseInt(String.valueOf(lift_weight.get(position)))*2.2);
+            holder.lift_weight_txt.setText(String.valueOf(poundsConversion) + "lbs");
+        } else{
+            holder.lift_weight_txt.setText(String.valueOf(lift_weight.get(position)) + "kg");
+        }
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

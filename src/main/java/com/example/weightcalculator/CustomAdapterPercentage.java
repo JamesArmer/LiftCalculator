@@ -46,7 +46,12 @@ public class CustomAdapterPercentage extends RecyclerView.Adapter<CustomAdapterP
     @Override
     public void onBindViewHolder(@NonNull CustomAdapterPercentage.MyViewHolder holder, final int position) {
         holder.percentage_txt.setText(String.valueOf(lift_percentage.get(position)) + "%");
-        holder.weight_txt.setText(String.valueOf(lift_weight.get(position)) + "kg");
+        if(LiftDatabase.convertToPounds){
+            int poundsConversion = (int) (Double.parseDouble(String.valueOf(lift_weight.get(position)))*2.2);
+            holder.weight_txt.setText(String.valueOf(poundsConversion) + "lbs");
+        } else{
+            holder.weight_txt.setText(String.valueOf(lift_weight.get(position)) + "kg");
+        }
     }
 
     @Override

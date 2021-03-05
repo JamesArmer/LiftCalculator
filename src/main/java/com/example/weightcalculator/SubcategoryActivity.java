@@ -1,16 +1,23 @@
 package com.example.weightcalculator;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -35,6 +42,7 @@ public class SubcategoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subcategory);
+
 
         getAndSetIntentData();
 
@@ -66,6 +74,11 @@ public class SubcategoryActivity extends AppCompatActivity {
         customAdapterSubcategory = new CustomAdapterSubcategory(SubcategoryActivity.this, SubcategoryActivity.this, lift_id, lift_name, lift_weight, Category, parentActivity);
         editCategoryRecyclerView.setAdapter(customAdapterSubcategory);
         editCategoryRecyclerView.setLayoutManager(new LinearLayoutManager(SubcategoryActivity.this));
+
+        ActionBar ab = getSupportActionBar();
+        if(ab != null){
+            ab.setTitle(Category + " subcategories");
+        }
     }
 
     void storeDataInArrays(){
@@ -100,5 +113,43 @@ public class SubcategoryActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         recreate();
+    }
+
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.delete_category_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.delete_category){
+            confirmDialogue();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    void confirmDialogue(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(SubcategoryActivity.this);
+        builder.setTitle("Delete Category");
+        builder.setMessage("Are you sure you want to delete this category?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(SubcategoryActivity.this, "Category deleted", Toast.LENGTH_SHORT).show();
+                LiftDatabase myDB = new LiftDatabase(SubcategoryActivity.this);
+                myDB.deleteCategory(Category);
+                Intent intent = new Intent(SubcategoryActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.create().show();
     }
 }

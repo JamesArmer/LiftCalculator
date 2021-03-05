@@ -1,6 +1,7 @@
 package com.example.weightcalculator;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -19,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        SharedPreferences settings = getSharedPreferences("UserInfo", 0);
+        LiftDatabase.convertToPounds = settings.getBoolean("convertToPounds", false);
+
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

@@ -27,8 +27,6 @@ public class PercentageActivity extends AppCompatActivity {
     String Category, liftName;
     float Weight;
 
-    private final int numberOfPercentages = 11;
-
     CustomAdapterPercentage customAdapterPercentage;
 
     @Override
@@ -58,7 +56,8 @@ public class PercentageActivity extends AppCompatActivity {
 
     void storeDataInArrays(){
         int basePercentage = 50;
-        for(int i=0;i<numberOfPercentages;i++){
+        int numberOfPercentages = 11;
+        for(int i = 0; i< numberOfPercentages; i++){
             lift_percentage.add(basePercentage);
             lift_weight.add(basePercentage*Weight);
             basePercentage += 5;
@@ -70,7 +69,7 @@ public class PercentageActivity extends AppCompatActivity {
             liftName = getIntent().getStringExtra("lift_name");
         }
         if(getIntent().hasExtra("lift_weight")) {
-            Weight = Float.valueOf(getIntent().getStringExtra("lift_weight"))/100;
+            Weight = Float.parseFloat(getIntent().getStringExtra("lift_weight"))/100;
         }
         if(getIntent().hasExtra("lift_category")){
             Category = getIntent().getStringExtra("lift_category");

@@ -79,7 +79,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         MenuInflater menuInflater = getActivity().getMenuInflater();
-        menuInflater.inflate(R.menu.my_menu, menu);
+        menuInflater.inflate(R.menu.delete_all_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
