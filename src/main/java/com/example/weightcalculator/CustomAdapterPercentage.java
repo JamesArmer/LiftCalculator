@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.PointerIcon;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -49,8 +50,11 @@ public class CustomAdapterPercentage extends RecyclerView.Adapter<CustomAdapterP
         if(LiftDatabase.convertToPounds){
             int poundsConversion = (int) (Double.parseDouble(String.valueOf(lift_weight.get(position)))*2.2);
             holder.weight_txt.setText(String.valueOf(poundsConversion) + "lbs");
-        } else{
-            holder.weight_txt.setText(String.valueOf(lift_weight.get(position)) + "kg");
+        } else if(LiftDatabase.roundKilos){
+            Double roundKilosConversion = Math.round(Double.parseDouble(String.valueOf(lift_weight.get(position)))*0.4)/0.4;
+            holder.weight_txt.setText(String.valueOf(roundKilosConversion + "kg"));
+        } else {
+            holder.weight_txt.setText(String.valueOf(lift_weight.get(position) + "kg"));
         }
     }
 

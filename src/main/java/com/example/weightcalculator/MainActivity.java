@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences settings = getSharedPreferences("UserInfo", 0);
         LiftDatabase.convertToPounds = settings.getBoolean("convertToPounds", false);
+        LiftDatabase.roundKilos = settings.getBoolean("roundKilos", false);
 
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {

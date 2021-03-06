@@ -29,6 +29,7 @@ public class LiftDatabase extends SQLiteOpenHelper {
     private static ArrayList<String> tableNames;
 
     public static Boolean convertToPounds;
+    public static Boolean roundKilos;
 
     public LiftDatabase(@Nullable Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -43,6 +44,7 @@ public class LiftDatabase extends SQLiteOpenHelper {
         db.execSQL(query);
         tableNames = new ArrayList<>();
         convertToPounds = false;
+        roundKilos = false;
     }
 
     @Override
