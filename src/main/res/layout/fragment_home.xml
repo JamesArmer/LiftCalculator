@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Home Fragment"
+        android:text="No Data"
         android:textSize="20sp"
         android:alpha="0.3"
         android:visibility="gone"
