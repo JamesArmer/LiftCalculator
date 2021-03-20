@@ -8,21 +8,21 @@
 
     <EditText
         android:id="@+id/liftCategoryEditText"
-        android:layout_width="wrap_content"
+        android:layout_width="369dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="95dp"
-        android:layout_marginLeft="95dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
         android:layout_marginTop="269dp"
-        android:layout_marginEnd="94dp"
-        android:layout_marginRight="94dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Lift Category e.g. Snatch" />
+        android:hint="Lift Category e.g. Snatch"
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/saveButton"

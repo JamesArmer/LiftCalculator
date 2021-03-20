@@ -65,7 +65,7 @@ public class CustomAdapterSubcategory extends RecyclerView.Adapter<CustomAdapter
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         holder.lift_name_txt.setText(String.valueOf(lift_name.get(position)));
         if(LiftDatabase.convertToPounds){
-            int poundsConversion = (int) (Integer.parseInt(String.valueOf(lift_weight.get(position)))*2.2);
+            int poundsConversion = (int) (Double.parseDouble(String.valueOf(lift_weight.get(position)))*2.2);
             holder.lift_weight_txt.setText(String.valueOf(poundsConversion) + "lbs");
         } else{
             holder.lift_weight_txt.setText(String.valueOf(lift_weight.get(position)) + "kg");
