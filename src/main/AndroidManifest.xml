@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.weightcalculator">
+    package="com.fitness.liftcalculator"
+    android:versionCode="01"
+    android:versionName="Initial Release">
 
     <application
         android:allowBackup="true"
@@ -10,26 +12,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".UpdateActivity"
+            android:name="com.fitness.liftcalculator.UpdateActivity"
             android:label="Update Lift Type"
-            android:parentActivityName=".SubcategoryActivity" />
+            android:parentActivityName="com.fitness.liftcalculator.SubcategoryActivity" />
         <activity
-            android:name=".PercentageActivity"
-            android:parentActivityName=".SubcategoryActivity" />
+            android:name="com.fitness.liftcalculator.PercentageActivity"
+            android:parentActivityName="com.fitness.liftcalculator.SubcategoryActivity" />
         <activity
-            android:name=".AddCategoryActivity"
+            android:name="com.fitness.liftcalculator.AddCategoryActivity"
             android:label="Add Lift Type"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName="com.fitness.liftcalculator.MainActivity" />
         <activity
-            android:name=".AddSubcategoryActivity"
+            android:name="com.fitness.liftcalculator.AddSubcategoryActivity"
             android:label="Add Lift Name and Weight"
-            android:parentActivityName=".SubcategoryActivity" />
+            android:parentActivityName="com.fitness.liftcalculator.SubcategoryActivity" />
         <activity
-            android:name=".SubcategoryActivity"
+            android:name="com.fitness.liftcalculator.SubcategoryActivity"
             android:label="Lift subcategories"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName="com.fitness.liftcalculator.MainActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.fitness.liftcalculator.MainActivity"
             android:label="Lift Calculator"
             android:screenOrientation="portrait">
             <intent-filter>
