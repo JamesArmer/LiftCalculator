@@ -33,7 +33,7 @@ public class AddSubcategoryActivity extends AppCompatActivity {
                 //Check that the input contains letters or numbers
                 inputText = String.valueOf(liftName_input.getText());
                 inputNumber = String.valueOf(liftWeight_input.getText());
-                if ((!inputText.matches("[a-zA-Z ]+")) || (!inputNumber.matches("[0-9]+"))) {
+                if ((!inputText.matches("[a-zA-Z ]+")) || (!inputNumber.matches("[0-9.,]+"))) {
                     Toast.makeText(AddSubcategoryActivity.this, "Add text/numbers to add a subcategory!", Toast.LENGTH_SHORT).show();
                 } else {
                     LiftDatabase myDB = new LiftDatabase(AddSubcategoryActivity.this);
